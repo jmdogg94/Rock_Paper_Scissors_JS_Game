@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+   
+// vraiable that holds the players score
+let playerScore = 0;
+
+// variable that holds the computers score
+let computerScore = 0;
+
+// array with rock paper scissors
+const myArray = [ 'rock', 'paper', 'scissors'];
+   
+// variable storing the playersSelection as an empty string
+const playerSelection = '';
+
+ // storing the function computerPlay() as a variable computerSelection
+const computerSelection = computerPlay();
+
+// A function that randomly returns rock, paper or scissors from the array.
+function computerPlay (){
+       return myArray[Math.floor(Math.random() * myArray.length)]
+    }
+    
+// calling the function
+computerPlay(myArray);
+
+// function that plays one round of rock paper scissors
+// it decides who won the round and displays a message
+function playRound(playerSelection, computerSelection){
+    if (
+       (playerSelection === 'rock' && computerSelection === 'scissors') ||
+       (playerSelection === 'paper' && computerSelection === 'rock') || 
+       (playerSelection === 'scissors' && computerSelection === 'paper') 
+    ){  
+        playerScore++;
+        return('Player wins!');
+} else if (
+        (playerSelection === 'rock' && computerSelection === 'paper') ||
+        (playerSelection === 'paper' && computerSelection === 'scissors') ||
+        (playerSelection === 'scissors' && computerSelection === 'rock')
+    ){  
+        computerScore++;
+        return('Computer wins!');           
+} else if (
+        (playerSelection === computerSelection)
+    ){ 
+        return('Its a draw!');
+} else {
+        return('Something went wrong');
+    }}
+
+    // calls the function playRound
+    playRound(playerSelection, computerSelection);
+
+
+// function called game that turns the single round into a game of 5 rounds
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    // the 'for' argument sets how many times the playerInput prompt appears
+    // so the '5' means that there will be 5 rounds, i++ means the score
+    // will increase by one after every round if there isnt a draw
+    for (i = 0; i < 5; i++) {
+      // the player gets to choose his throw
+      let playerInput = window.prompt(
+          'Please choose either rock, paper or scissors'
+          ).toLowerCase();
+      // the computer reandomly generates a throw
+      let computerSelection = computerPlay();
+      // the gameResult is a variable with the playersInput and computerSelection
+      // it decides who won the round and then displays a message, who chose what
+      // throw, who won the round and the score of the round
+      let gameResult = playRound(playerInput, computerSelection);
+      switch (gameResult) {
+        case "Player wins!":
+          playerScore += 1;
+          console.log('The player chooses', playerInput);
+          console.log('The computer chooses', computerSelection);
+          console.log("Player wins!");
+          console.log('Player score =', playerScore + ' Computer score =', computerScore);
+          break;
+        case "Computer wins!":
+          computerScore += 1;
+          console.log('The player chooses', playerInput);
+          console.log('The computer chooses', computerSelection);
+          console.log("Computer wins!");
+          console.log('Player score =', playerScore + ' Computer score =', computerScore);
+          break;
+        case "Its a draw!":
+          console.log('The player chooses', playerInput);
+          console.log('The computer chooses', computerSelection);
+          console.log("Its a draw!");
+          console.log('Player score =', playerScore + ' Computer score =', computerScore);
+          break;
+      }
+    }
+    // this if statmemnt displays a message at the end of the game
+    // who ever won will get a 'well done' message, if there is a draw
+    // you get 'its a draw' message.
+    if (playerScore > computerScore) {
+      console.log(
+        "Well done, you're the winner! You won " +
+          playerScore +
+          " round(s) and the computer won " +
+          computerScore +
+          " round(s)."
+      );
+    } else if (computerScore > playerScore) {
+      console.log(
+        "Unlucky, you Lost! You won " +
+          playerScore +
+          " round(s) and the computer won " +
+          computerScore +
+          " round(s)."
+      );
+    } else {
+      console.log(
+        "That was close, It's a draw! You won " +
+          playerScore +
+          " round(s) and the computer won " +
+          computerScore +
+          " round(s)."
+      );
+    }
+  }
+game();  
+</script>
+</body>
+</html>
