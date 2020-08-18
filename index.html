@@ -64,8 +64,8 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
     // the 'for' argument sets how many times the playerInput prompt appears
-    // so the '5' means that there will be 5 rounds, i++ means the score
-    // will increase by one after every round if there isnt a draw
+    // so the '5' means that there will be 5 rounds, i++ means the rounds
+    // will continue IF there has been 5 or less rounds
     for (i = 0; i < 5; i++) {
       // the player gets to choose his throw
       let playerInput = window.prompt(
